@@ -12,12 +12,3 @@
 */
 use Illuminate\Routing\Router;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::group(['prefix' => 'api', 'namespace' => 'Api'], function () {
-    Route::group(['prefix' => 'users' ], function(Router $router){
-        $router->get('', 'UserController@getUsers');
-    });
-});

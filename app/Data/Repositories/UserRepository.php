@@ -10,6 +10,8 @@ namespace App\Data\Repositories;
 
 use App\Data\RepositoryInterfaces\IUserRepository;
 use App\Entities\User;
+use Illuminate\Support\Facades\Hash;
+
 
 class UserRepository implements IUserRepository
 {
@@ -32,7 +34,7 @@ class UserRepository implements IUserRepository
         $user = new User;
 
         $user->name = $data['name'];
-        $user->password = bcrypt($data['password']);
+        $user->password = Hash::make($data['password']);
         $user->email = $data['email'];
 
         $user->save();
